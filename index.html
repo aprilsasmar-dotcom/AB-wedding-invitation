@@ -107,7 +107,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 .couple-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
 .couple-name{font-family:var(--font-script);font-size:3rem;color:var(--gold-light)}
 .couple-full{font-family:var(--font-sans);font-size:1.2rem;font-weight:300;color:rgba(255,255,255,.7);margin:.2rem 0 .5rem}
-.couple-parents{font-family:var(--font-serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6}
+.couple-parents{font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6}
 .couple-parents em{color:var(--pink);font-style:normal;font-size:.8rem}
 .couple-amp{font-family:var(--font-script);font-size:2.5rem;color:var(--gold);margin:.5rem 0}
 .event-card{max-width:420px;margin:0 auto 1.5rem;background:var(--white);border-radius:20px;padding:2.5rem 2rem;box-shadow:0 10px 40px rgba(92,61,46,.08);border:1px solid var(--pink-light);position:relative}
@@ -136,6 +136,8 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 .gallery-item{border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s;position:relative;aspect-ratio:3/4;background:var(--bg-darker)}
 .gallery-item:hover{transform:scale(1.02)}
 .gallery-item.wide{grid-column:span 2;aspect-ratio:4/3}
+.gallery-item.full{aspect-ratio:unset;height:auto}
+.gallery-item.full img{height:auto;object-fit:unset}
 .gallery-item img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.02);transition:filter .3s}
 .gallery-item:hover img{filter:saturate(1.1) contrast(1.05)}
 #lightbox{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;cursor:pointer}
@@ -367,7 +369,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
     <div class="section-title reveal">Gallery</div>
     <div class="section-sub reveal">Our Prewedding</div>
     <div class="gallery-grid">
-      <div class="gallery-item wide" onclick="openLB(0)"><img src="https://dl4.pushbulletusercontent2.com/aAJwOVYLh2B368D2no2u2h1C8nNzU4YZ/prewed-1.jpeg" alt=""></div>
+      <div class="gallery-item wide full" onclick="openLB(0)"><img src="https://dl4.pushbulletusercontent2.com/aAJwOVYLh2B368D2no2u2h1C8nNzU4YZ/prewed-1.jpeg" alt=""></div>
       <div class="gallery-item" onclick="openLB(1)"><img src="https://dl4.pushbulletusercontent2.com/SwAfHXtfFoepyk9kfAYkLBYfSbI7r4iM/prewed-2.jpeg" alt=""></div>
       <div class="gallery-item" onclick="openLB(2)"><img src="https://dl4.pushbulletusercontent2.com/KBk7go7tGkcRHMMWUung7eIao6VYsXyP/prewed-3.jpg" alt=""></div>
       <div class="gallery-item" onclick="openLB(3)"><img src="https://dl4.pushbulletusercontent2.com/h8BTguVsm30dVWJE55JKlQB2gws1ccxs/prewed-4.jpg" alt=""></div>
@@ -569,6 +571,7 @@ document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').
 
 function loadW(){
   const c=document.getElementById('wishes-list');
+  if(!DB_URL||DB_URL.includes('PASTE')){c.innerHTML='';return}
   fetch(DB_URL+'/wishes.json')
     .then(r=>r.json())
     .then(data=>{
@@ -588,6 +591,7 @@ function loadW(){
 function submitRSVP(){
   const n=document.getElementById('r-name').value.trim(),a=document.getElementById('r-att').value,g=document.getElementById('r-num').value,w=document.getElementById('r-wish').value.trim();
   if(!n||!a){alert('Please fill in your name and attendance confirmation.');return}
+  if(!DB_URL||DB_URL.includes('PASTE')){alert('RSVP belum terhubung. Hubungi admin.');return}
   const btn=document.getElementById('btn-rsvp');btn.textContent='Sending...';btn.disabled=true;
   fetch(DB_URL+'/wishes.json',{
     method:'POST',
