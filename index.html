@@ -190,6 +190,19 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 .closing-img-wrap img{width:100%;height:auto;filter:drop-shadow(0 10px 30px rgba(166,120,120,.15))}
 .closing-img-text{margin-top:1.5rem;font-family:var(--font-script);font-size:2rem;color:var(--pink-dark)}
 .closing-img-sub{font-family:var(--font-display);font-size:.55rem;letter-spacing:4px;color:var(--gold);margin-top:.5rem}
+
+/* SWIPE HINT */
+#swipe-hint{position:fixed;bottom:30px;left:20px;z-index:99;opacity:0;pointer-events:none;transition:opacity .8s;display:flex;flex-direction:column;align-items:center;gap:4px}
+#swipe-hint.show{opacity:1}
+.sh-chevrons{display:flex;flex-direction:column;align-items:center;gap:3px;margin-bottom:2px}
+.sh-ch{width:16px;height:16px;border-left:2.5px solid rgba(255,255,255,.65);border-top:2.5px solid rgba(255,255,255,.65);transform:rotate(45deg);border-radius:2px}
+.sh-ch:nth-child(1){animation:shPulse 1.8s .5s ease-in-out infinite}
+.sh-ch:nth-child(2){animation:shPulse 1.8s .25s ease-in-out infinite}
+.sh-ch:nth-child(3){animation:shPulse 1.8s 0s ease-in-out infinite}
+@keyframes shPulse{0%,100%{opacity:.15}50%{opacity:.9}}
+.sh-hand{animation:shBounce 1.8s ease-in-out infinite}
+@keyframes shBounce{0%,100%{transform:translateY(5px)}50%{transform:translateY(-7px)}}
+
 @media(min-width:768px){
   .cover-name,.cover-name2{font-size:5.5rem}
   .section{padding:6rem 2rem}.section-title{font-size:3rem}
@@ -212,6 +225,22 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 <div id="scroll-progress"></div>
 
 <button id="music-toggle" title="Play/Pause"><span>&#9835;</span></button>
+
+<!-- SWIPE HINT -->
+<div id="swipe-hint">
+  <div class="sh-chevrons">
+    <div class="sh-ch"></div>
+    <div class="sh-ch"></div>
+    <div class="sh-ch"></div>
+  </div>
+  <svg class="sh-hand" width="34" height="46" viewBox="0 0 34 46" fill="none">
+    <rect x="13" y="1" width="8" height="22" rx="4" fill="rgba(255,255,255,.4)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/>
+    <rect x="5" y="13" width="6" height="16" rx="3" fill="rgba(255,255,255,.3)" stroke="rgba(255,255,255,.45)" stroke-width="1"/>
+    <rect x="23" y="13" width="6" height="16" rx="3" fill="rgba(255,255,255,.3)" stroke="rgba(255,255,255,.45)" stroke-width="1"/>
+    <rect x="5" y="22" width="24" height="20" rx="8" fill="rgba(255,255,255,.32)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+  </svg>
+</div>
+
 <audio id="bg-music" loop preload="auto"><source src="https://dl4.pushbulletusercontent2.com/ASdcmo21h7i7d8XuPYv84wo0KrCBP4Le/music.mp3" type="audio/mpeg"></audio>
 
 <svg style="display:none">
@@ -374,7 +403,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
       <div class="gallery-item" onclick="openLB(2)"><img src="https://dl4.pushbulletusercontent2.com/KBk7go7tGkcRHMMWUung7eIao6VYsXyP/prewed-3.jpg" alt=""></div>
       <div class="gallery-item" onclick="openLB(3)"><img src="https://dl4.pushbulletusercontent2.com/h8BTguVsm30dVWJE55JKlQB2gws1ccxs/prewed-4.jpg" alt=""></div>
       <div class="gallery-item" onclick="openLB(4)"><img src="https://dl4.pushbulletusercontent2.com/dD6HRqoBc8Ihh6zXlnSJgJ3KE86Wo4ca/prewed-5.jpg" alt=""></div>
-      <div class="gallery-item wide" onclick="openLB(5)"><img src="https://dl4.pushbulletusercontent2.com/5of1itlULEzfKw75SpghJKt8q6m6rPEB/prewed-6.jpg" alt=""></div>
+      <div class="gallery-item wide full" onclick="openLB(5)"><img src="https://dl4.pushbulletusercontent2.com/5of1itlULEzfKw75SpghJKt8q6m6rPEB/prewed-6.jpg" alt=""></div>
     </div>
   </section>
 
@@ -477,7 +506,7 @@ const G=[
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').classList.add('hide');setTimeout(()=>document.getElementById('loading').remove(),1000)},1800)});
 
 const p=new URLSearchParams(location.search);const gn=p.get('to')||p.get('guest');
-if(gn)document.getElementById('guest-name').textContent=decodeURIComponent(gn);
+if(gn){document.getElementById('guest-name').textContent=decodeURIComponent(gn);document.getElementById('r-name').value=decodeURIComponent(gn);}
 
 (function(){
   const c=document.getElementById('bfly-box');
@@ -523,6 +552,7 @@ document.getElementById('btn-open').addEventListener('click',()=>{
   const mu=document.getElementById('bg-music');mu.volume=.3;
   mu.play().then(()=>mb.classList.add('playing')).catch(()=>{});
   setTimeout(()=>cv.remove(),1300);
+  resetSwipeHint();
 });
 
 document.getElementById('music-toggle').addEventListener('click',()=>{
@@ -537,10 +567,19 @@ document.addEventListener('visibilitychange',()=>{
   else if(wasPlaying){mu.play().then(()=>mb.classList.add('playing')).catch(()=>{})}
 });
 
+let swipeTimer;
+const sh=document.getElementById('swipe-hint');
+function resetSwipeHint(){
+  sh.classList.remove('show');
+  clearTimeout(swipeTimer);
+  swipeTimer=setTimeout(()=>sh.classList.add('show'),7000);
+}
 window.addEventListener('scroll',()=>{
   const t=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
   document.getElementById('scroll-progress').style.width=(h>0?(t/h)*100:0)+'%';
-});
+  resetSwipeHint();
+},{passive:true});
+window.addEventListener('touchstart',resetSwipeHint,{passive:true});
 
 const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
