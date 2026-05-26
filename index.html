@@ -58,7 +58,6 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 #cover{position:fixed;inset:0;z-index:50;background:var(--bg-darker);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--white);overflow:hidden;transition:opacity 1.2s,transform 1.2s}
 #cover.open{opacity:0;transform:scale(1.05);pointer-events:none}
 .cover-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(201,160,160,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(201,169,110,.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(30,20,15,1) 0%,var(--bg-darker) 100%)}
-/* Cover floral corners */
 .cover-floral{position:absolute;pointer-events:none;opacity:.08}
 .cover-floral svg{width:100%;height:100%}
 .cover-floral.tl{top:0;left:0;width:180px;height:180px}
@@ -116,12 +115,6 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 .fl-divider .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .fl-divider svg{width:28px;height:28px;flex-shrink:0}
 
-/* HASHTAG BANNER */
-.hashtag-banner{padding:2.5rem 1.5rem;background:var(--bg-dark);text-align:center}
-.hashtag-banner .tag{display:block;font-family:var(--font-display);font-size:.7rem;letter-spacing:3px;color:var(--gold);margin:.4rem 0;opacity:0;transform:translateY(10px);transition:all .8s}
-.hashtag-banner .tag.vis{opacity:1;transform:translateY(0)}
-.hashtag-banner .tag:nth-child(2){transition-delay:.2s;color:var(--pink)}
-
 /* GREETING */
 #greeting{padding-top:4rem;padding-bottom:4rem}
 .bismillah{font-size:1.8rem;color:var(--brown);margin-bottom:1.5rem;line-height:1.8}
@@ -129,8 +122,6 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 
 /* COUPLE */
 #couple{padding:4rem 1.5rem 5rem}
-.couple-hero-img{width:280px;max-width:80%;height:auto;margin:0 auto 2.5rem;border-radius:180px 180px 20px 20px;border:3px solid var(--gold);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.couple-hero-img img{width:100%;height:100%;object-fit:cover}
 .couple-logo{width:50px;margin:0 auto 2rem;filter:brightness(0) invert(1) opacity(.6)}
 .couple-card{max-width:400px;margin:0 auto 1.5rem}
 .couple-photo{width:170px;height:170px;margin:0 auto 1.2rem;border-radius:50%;border:2px solid var(--gold);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.4)}
@@ -176,7 +167,6 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 .gallery-item.wide{grid-column:span 2;aspect-ratio:4/3}
 .gallery-item img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.02);transition:filter .3s}
 .gallery-item:hover img{filter:saturate(1.1) contrast(1.05)}
-.gallery-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--font-sans);font-size:.65rem;color:rgba(255,255,255,.3);border:1px dashed rgba(255,255,255,.15);border-radius:8px}
 
 #lightbox{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;cursor:pointer}
 #lightbox.active{display:flex}
@@ -229,7 +219,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 .closing-hash{font-family:var(--font-display);font-size:.55rem;letter-spacing:3px;color:var(--pink);line-height:2}
 .footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);font-family:var(--font-sans);font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:1px}
 
-/* CLOSING IMAGE PAGE */
+/* CLOSING IMAGE FULL PAGE */
 #closing-img{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:3rem 2rem;position:relative;overflow:hidden}
 #closing-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(248,235,230,.6),var(--bg) 70%)}
 .closing-img-wrap{position:relative;z-index:1;max-width:500px;width:100%;text-align:center}
@@ -242,7 +232,6 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
   .section{padding:6rem 2rem}.section-title{font-size:3rem}
   .gallery-grid{grid-template-columns:repeat(3,1fr);gap:10px}
   .cd-grid{gap:2rem}.cd-num{font-size:3.5rem}
-  .couple-hero-img{width:320px}
   .fl-corner{width:180px!important;height:180px!important}
   .cover-floral{width:220px!important;height:220px!important}
 }
@@ -253,7 +242,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 
 <!-- LOADING -->
 <div id="loading">
-  <img class="loader-logo" src="logo-ab.png" alt="A&B" onerror="this.style.display='none'">
+  <img class="loader-logo" src="https://dl4.pushbulletusercontent2.com/7QpqvHbY29AvdHyrRUGQiHV9n4u5U0YS/logo-ab.png" alt="A&B" onerror="this.style.display='none'">
   <div class="loader-text">April & Bayu</div>
 </div>
 
@@ -264,33 +253,27 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 
 <!-- MUSIC -->
 <button id="music-toggle" title="Play/Pause"><span>&#9835;</span></button>
-<!-- Simpan "Meant 2 Be - Shakira Jasmine & Nuca" sebagai music.mp3 -->
-<audio id="bg-music" loop preload="auto"><source src="music.mp3" type="audio/mpeg"></audio>
+<audio id="bg-music" loop preload="auto"><source src="https://dl4.pushbulletusercontent2.com/ASdcmo21h7i7d8XuPYv84wo0KrCBP4Le/music.mp3" type="audio/mpeg"></audio>
 
 <!-- INLINE SVG TEMPLATES (hidden, reused by JS) -->
 <svg style="display:none">
   <defs>
-    <!-- Flower cluster for corners -->
     <g id="fl-cluster">
       <circle cx="30" cy="30" r="18" fill="currentColor" opacity=".18"/>
       <circle cx="55" cy="20" r="12" fill="currentColor" opacity=".12"/>
       <circle cx="20" cy="55" r="14" fill="currentColor" opacity=".14"/>
       <circle cx="50" cy="48" r="10" fill="currentColor" opacity=".1"/>
       <circle cx="38" cy="42" r="8" fill="currentColor" opacity=".2"/>
-      <!-- petals -->
       <ellipse cx="75" cy="35" rx="8" ry="14" fill="currentColor" opacity=".1" transform="rotate(-20 75 35)"/>
       <ellipse cx="35" cy="75" rx="8" ry="14" fill="currentColor" opacity=".1" transform="rotate(30 35 75)"/>
       <ellipse cx="65" cy="65" rx="6" ry="10" fill="currentColor" opacity=".08" transform="rotate(-10 65 65)"/>
-      <!-- small dots -->
       <circle cx="80" cy="15" r="3" fill="currentColor" opacity=".15"/>
       <circle cx="15" cy="80" r="3" fill="currentColor" opacity=".15"/>
       <circle cx="90" cy="50" r="2" fill="currentColor" opacity=".1"/>
       <circle cx="50" cy="90" r="2" fill="currentColor" opacity=".1"/>
-      <!-- leaf strokes -->
       <path d="M60 70 Q80 80 95 95" stroke="currentColor" fill="none" opacity=".08" stroke-width="1.5"/>
       <path d="M70 60 Q85 75 100 85" stroke="currentColor" fill="none" opacity=".06" stroke-width="1"/>
     </g>
-    <!-- Small flower for divider -->
     <g id="fl-small">
       <ellipse cx="14" cy="6" rx="4" ry="7" fill="currentColor" opacity=".35" transform="rotate(0 14 14)"/>
       <ellipse cx="14" cy="6" rx="4" ry="7" fill="currentColor" opacity=".3" transform="rotate(72 14 14)"/>
@@ -312,7 +295,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
   <div class="bokeh" style="width:60px;height:60px;top:25%;left:60%;animation-delay:4s"></div>
   <div class="bokeh" style="width:90px;height:90px;top:70%;left:20%;animation-delay:1.5s"></div>
   <div class="cover-content">
-    <img class="cover-logo" src="logo-ab.png" alt="AB" onerror="this.style.display='none'">
+    <img class="cover-logo" src="https://dl4.pushbulletusercontent2.com/7QpqvHbY29AvdHyrRUGQiHV9n4u5U0YS/logo-ab.png" alt="AB" onerror="this.style.display='none'">
     <div class="cover-sub">The Wedding of</div>
     <div class="cover-name">April</div>
     <div class="cover-amp">&amp;</div>
@@ -328,7 +311,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 <!-- ===== MAIN ===== -->
 <div id="main-content">
 
-  <!-- GREETING: Salam -->
+  <!-- GREETING -->
   <section id="greeting" class="section cream">
     <div class="fl-corner tl"><svg viewBox="0 0 100 100"><use href="#fl-cluster" style="color:#C9A96E"/></svg></div>
     <div class="fl-corner br"><svg viewBox="0 0 100 100"><use href="#fl-cluster" style="color:#C9A96E"/></svg></div>
@@ -340,12 +323,12 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
       <div class="line"></div>
     </div>
     <div class="reveal rd2" style="margin-top:1rem">
-      <span class="tag" style="display:block;font-family:var(--font-display);font-size:.65rem;letter-spacing:3px;color:var(--gold);margin:.3rem 0">#BAYUsannikahinAPRIL</span>
-      <span class="tag" style="display:block;font-family:var(--font-display);font-size:.65rem;letter-spacing:3px;color:var(--pink-dark);margin:.3rem 0">#alwaysBAYPRILside</span>
+      <span style="display:block;font-family:var(--font-display);font-size:.65rem;letter-spacing:3px;color:var(--gold);margin:.3rem 0">#BAYUsannikahinAPRIL</span>
+      <span style="display:block;font-family:var(--font-display);font-size:.65rem;letter-spacing:3px;color:var(--pink-dark);margin:.3rem 0">#alwaysBAYPRILside</span>
     </div>
   </section>
 
-  <!-- GREETING: Invitation text -->
+  <!-- INVITATION TEXT -->
   <section id="invitation" class="section dark" style="padding:4rem 1.5rem">
     <div class="reveal"><p class="greeting-text" style="color:rgba(255,255,255,.7)">With the grace and blessings of Allah Subhanahu Wa Ta'ala, we cordially invite you to share in the celebration of our marriage.</p></div>
     <div class="diamond-orn reveal rd1"><span></span><span></span><span></span></div>
@@ -355,16 +338,16 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
   <section id="couple" class="section dark">
     <div class="fl-corner tl"><svg viewBox="0 0 100 100"><use href="#fl-cluster" style="color:#C9A96E"/></svg></div>
     <div class="fl-corner br"><svg viewBox="0 0 100 100"><use href="#fl-cluster" style="color:#C9A96E"/></svg></div>
-    <img class="couple-logo reveal" src="logo-ab.png" alt="" onerror="this.style.display='none'">
+    <img class="couple-logo reveal" src="https://dl4.pushbulletusercontent2.com/7QpqvHbY29AvdHyrRUGQiHV9n4u5U0YS/logo-ab.png" alt="" onerror="this.style.display='none'">
     <div class="couple-card reveal rd1">
-      <div class="couple-photo"><img src="bride.png" alt="April"></div>
+      <div class="couple-photo"><img src="https://dl4.pushbulletusercontent2.com/JNCjobdKWyH7QA6rzh3iS564kM8JaMuB/bride%20(1).png" alt="April"></div>
       <div class="couple-name">April</div>
       <div class="couple-full">Aprilia Sasmar Putri, S.S., M.A.(Res)</div>
       <div class="couple-parents">Daughter of Mr. Syahrul Abbas <em>(Late)</em><br>&amp; Mrs. Marlianty Utami</div>
     </div>
     <div class="couple-amp reveal">&amp;</div>
     <div class="couple-card reveal rd2">
-      <div class="couple-photo"><img src="groom.png" alt="Bayu"></div>
+      <div class="couple-photo"><img src="https://dl4.pushbulletusercontent2.com/osM7NUmuNovHCKv12MpzFSEXmE3zduPh/groom%20(1).png" alt="Bayu"></div>
       <div class="couple-name">Bayu</div>
       <div class="couple-full">Bayu Arief Setya Putra, S.E.</div>
       <div class="couple-parents">Son of Mr. Bambang Winarno<br>&amp; Mrs. Eko Wahjoe Noer Hastoeti <em>(Late)</em></div>
@@ -412,7 +395,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
   <section id="poem" class="section cream">
     <div class="fl-corner tl"><svg viewBox="0 0 100 100"><use href="#fl-cluster" style="color:#C9A96E"/></svg></div>
     <div class="fl-corner br"><svg viewBox="0 0 100 100"><use href="#fl-cluster" style="color:#C9A96E"/></svg></div>
-    <img class="poem-logo reveal" src="logo-ab.png" alt="" onerror="this.style.display='none'">
+    <img class="poem-logo reveal" src="https://dl4.pushbulletusercontent2.com/7QpqvHbY29AvdHyrRUGQiHV9n4u5U0YS/logo-ab.png" alt="" onerror="this.style.display='none'">
     <div class="section-title reveal">Our Vow</div>
     <div class="section-sub reveal">A Promise</div>
     <div class="fl-divider reveal">
@@ -437,18 +420,12 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
     <div class="section-title reveal">Gallery</div>
     <div class="section-sub reveal">Our Prewedding</div>
     <div class="gallery-grid">
-      <div class="gallery-item wide" onclick="openLB(0)"><img src="prewed-1.jpeg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(1)"><img src="prewed-2.jpeg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(2)"><img src="prewed-3.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(3)"><img src="prewed-4.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(4)"><img src="prewed-5.jpg" alt=""></div>
-      <div class="gallery-item wide" onclick="openLB(5)"><img src="prewed-6.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(6)"><img src="prewed-7.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(7)"><img src="prewed-8.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(8)"><img src="prewed-9.jpg" alt=""></div>
-      <div class="gallery-item wide" onclick="openLB(9)"><img src="prewed-10.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(10)"><img src="prewed-11.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLB(11)"><img src="prewed-12.jpg" alt=""></div>
+      <div class="gallery-item wide" onclick="openLB(0)"><img src="https://dl4.pushbulletusercontent2.com/aAJwOVYLh2B368D2no2u2h1C8nNzU4YZ/prewed-1.jpeg" alt=""></div>
+      <div class="gallery-item" onclick="openLB(1)"><img src="https://dl4.pushbulletusercontent2.com/SwAfHXtfFoepyk9kfAYkLBYfSbI7r4iM/prewed-2.jpeg" alt=""></div>
+      <div class="gallery-item" onclick="openLB(2)"><img src="https://dl4.pushbulletusercontent2.com/KBk7go7tGkcRHMMWUung7eIao6VYsXyP/prewed-3.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLB(3)"><img src="https://dl4.pushbulletusercontent2.com/h8BTguVsm30dVWJE55JKlQB2gws1ccxs/prewed-4.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLB(4)"><img src="https://dl4.pushbulletusercontent2.com/dD6HRqoBc8Ihh6zXlnSJgJ3KE86Wo4ca/prewed-5.jpg" alt=""></div>
+      <div class="gallery-item wide" onclick="openLB(5)"><img src="https://dl4.pushbulletusercontent2.com/5of1itlULEzfKw75SpghJKt8q6m6rPEB/prewed-6.jpg" alt=""></div>
     </div>
   </section>
 
@@ -502,17 +479,16 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
     <div class="footer reveal">Made with love &#10084;</div>
   </section>
 
-  <!-- CLOSING IMAGE FULL PAGE -->
+  <!-- CLOSING IMAGE -->
   <section id="closing-img">
     <div class="closing-img-wrap reveal">
-      <img src="closing.png" alt="April & Bayu - 26.06.26">
+      <img src="https://dl4.pushbulletusercontent2.com/mvAVMjCAuyNjxh9F6NiCJTb1OC4C08Kk/closing.png" alt="April & Bayu - 26.06.26">
       <div class="closing-img-text">April &amp; Bayu</div>
       <div class="closing-img-sub">#BAYUsannikahinAPRIL &nbsp; #alwaysBAYPRILside</div>
     </div>
   </section>
 
 </div>
-
 
 <!-- GIFT MODAL -->
 <div id="gift-modal" onclick="closeGift(event)">
@@ -544,14 +520,20 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
 </div>
 
 <script>
-const G=['prewed-1.jpeg','prewed-2.jpeg','prewed-3.jpg','prewed-4.jpg','prewed-5.jpg','prewed-6.jpg','prewed-7.jpg','prewed-8.jpg','prewed-9.jpg','prewed-10.jpg','prewed-11.jpg','prewed-12.jpg'];
+const G=[
+  'https://dl4.pushbulletusercontent2.com/aAJwOVYLh2B368D2no2u2h1C8nNzU4YZ/prewed-1.jpeg',
+  'https://dl4.pushbulletusercontent2.com/SwAfHXtfFoepyk9kfAYkLBYfSbI7r4iM/prewed-2.jpeg',
+  'https://dl4.pushbulletusercontent2.com/KBk7go7tGkcRHMMWUung7eIao6VYsXyP/prewed-3.jpg',
+  'https://dl4.pushbulletusercontent2.com/h8BTguVsm30dVWJE55JKlQB2gws1ccxs/prewed-4.jpg',
+  'https://dl4.pushbulletusercontent2.com/dD6HRqoBc8Ihh6zXlnSJgJ3KE86Wo4ca/prewed-5.jpg',
+  'https://dl4.pushbulletusercontent2.com/5of1itlULEzfKw75SpghJKt8q6m6rPEB/prewed-6.jpg'
+];
 
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').classList.add('hide');setTimeout(()=>document.getElementById('loading').remove(),1000)},1800)});
 
 const p=new URLSearchParams(location.search);const gn=p.get('to')||p.get('guest');
 if(gn)document.getElementById('guest-name').textContent=decodeURIComponent(gn);
 
-/* BUTTERFLIES - big, realistic */
 (function(){
   const c=document.getElementById('bfly-box');
   for(let i=0;i<6;i++){
@@ -565,21 +547,19 @@ if(gn)document.getElementById('guest-name').textContent=decodeURIComponent(gn);
     const hue=Math.random()>.5;
     const c1=hue?'rgba(201,169,110,':'rgba(190,160,160,';
     const c2=hue?'rgba(220,190,130,':'rgba(210,180,180,';
-    b.innerHTML=`<svg viewBox="0 0 50 50" fill="none">
-      <g>
-        <path style="animation:bflyWingL .35s ease-in-out infinite alternate;transform-origin:25px 25px"
-          d="M25 25 C21 17,10 8,5 14 C0 20,6 28,25 25 M25 25 C22 20,14 16,10 19 C6 22,14 26,25 25"
-          fill="${c1}.45)" stroke="${c1}.15)" stroke-width=".3"/>
-        <path style="animation:bflyWingR .35s ease-in-out infinite alternate;transform-origin:25px 25px"
-          d="M25 25 C29 17,40 8,45 14 C50 20,44 28,25 25 M25 25 C28 20,36 16,40 19 C44 22,36 26,25 25"
-          fill="${c2}.4)" stroke="${c2}.12)" stroke-width=".3"/>
-        <ellipse cx="25" cy="28" rx="1" ry="5" fill="${c1}.5)"/>
-        <path d="M24 23 C22 18,20 15,18 13" stroke="${c1}.35)" fill="none" stroke-width=".5" stroke-linecap="round"/>
-        <path d="M26 23 C28 18,30 15,32 13" stroke="${c1}.35)" fill="none" stroke-width=".5" stroke-linecap="round"/>
-        <circle cx="18" cy="13" r="1" fill="${c1}.4)"/>
-        <circle cx="32" cy="13" r="1" fill="${c1}.4)"/>
-      </g>
-    </svg>`;
+    b.innerHTML=`<svg viewBox="0 0 50 50" fill="none"><g>
+      <path style="animation:bflyWingL .35s ease-in-out infinite alternate;transform-origin:25px 25px"
+        d="M25 25 C21 17,10 8,5 14 C0 20,6 28,25 25 M25 25 C22 20,14 16,10 19 C6 22,14 26,25 25"
+        fill="${c1}.45)" stroke="${c1}.15)" stroke-width=".3"/>
+      <path style="animation:bflyWingR .35s ease-in-out infinite alternate;transform-origin:25px 25px"
+        d="M25 25 C29 17,40 8,45 14 C50 20,44 28,25 25 M25 25 C28 20,36 16,40 19 C44 22,36 26,25 25"
+        fill="${c2}.4)" stroke="${c2}.12)" stroke-width=".3"/>
+      <ellipse cx="25" cy="28" rx="1" ry="5" fill="${c1}.5)"/>
+      <path d="M24 23 C22 18,20 15,18 13" stroke="${c1}.35)" fill="none" stroke-width=".5" stroke-linecap="round"/>
+      <path d="M26 23 C28 18,30 15,32 13" stroke="${c1}.35)" fill="none" stroke-width=".5" stroke-linecap="round"/>
+      <circle cx="18" cy="13" r="1" fill="${c1}.4)"/>
+      <circle cx="32" cy="13" r="1" fill="${c1}.4)"/>
+    </g></svg>`;
     c.appendChild(b);
   }
   for(let i=0;i<10;i++){
@@ -626,7 +606,6 @@ function addCal(){
   const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20260626T060000Z','DTEND:20260626T110000Z','SUMMARY:Wedding April & Bayu','LOCATION:Mutiara Senja\\, Jl. Kol. Abunjambak No.37\\, Kota Jambi','DESCRIPTION:Wedding Reception of Aprilia Sasmar Putri & Bayu Arief Setya Putra','END:VEVENT','END:VCALENDAR'].join('\r\n');
   const b=new Blob([ics],{type:'text/calendar'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='wedding-april-bayu.ics';a.click();URL.revokeObjectURL(u);
 }
-
 
 function openGift(){document.getElementById('gift-modal').classList.add('active');document.body.style.overflow='hidden'}
 function closeGift(e){if(e&&e.target!==e.currentTarget)return;document.getElementById('gift-modal').classList.remove('active');document.body.style.overflow=''}
