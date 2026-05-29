@@ -345,7 +345,7 @@ button{border:none;cursor:pointer;font-family:inherit;background:none}
       <div class="event-date-display">26 &middot; 06 &middot; 2026</div>
       <div class="event-time">2 &ndash; 6 PM WIB</div>
       <div class="event-venue">MUTIARA SENJA</div>
-      <div class="event-address">Jl. Kol. Abunjambak No.37,<br>Gunung Sarik, Kec. Talanaipura,<br>Kota Jambi, Jambi 36123</div>
+      <div class="event-address">Jl. Kol. Abunjambak No.37,<br>Gunung Sarik, Kec. Telanaipura,<br>Kota Jambi, Jambi 36123</div>
       <a class="btn-a gold" href="https://maps.google.com/?q=Mutiara+Senja+Jambi" target="_blank" rel="noopener">&#9906; Google Maps</a>
       <a class="btn-a dark" href="#" onclick="addCal();return false">&#128197; Save the Date</a>
     </div>
@@ -500,7 +500,12 @@ const G=[
   'https://dl4.pushbulletusercontent2.com/5of1itlULEzfKw75SpghJKt8q6m6rPEB/prewed-6.jpg'
 ];
 
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').classList.add('hide');setTimeout(()=>document.getElementById('loading').remove(),1000)},1800)});
+window.addEventListener('load',()=>{
+  setTimeout(()=>{document.getElementById('loading').classList.add('hide');setTimeout(()=>document.getElementById('loading').remove(),1000)},1800);
+  const mu=document.getElementById('bg-music'),mb=document.getElementById('music-toggle');
+  mu.volume=.3;
+  mu.play().then(()=>{mb.style.display='flex';mb.classList.add('playing')}).catch(()=>{});
+});
 
 const p=new URLSearchParams(location.search);const gn=p.get('to')||p.get('guest');
 if(gn){document.getElementById('guest-name').textContent=decodeURIComponent(gn);document.getElementById('r-name').value=decodeURIComponent(gn);}
